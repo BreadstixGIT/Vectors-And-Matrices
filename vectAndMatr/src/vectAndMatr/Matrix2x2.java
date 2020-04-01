@@ -47,12 +47,13 @@ public class Matrix2x2 {
 		this.col1 = new Vector2D(this.data[0][1], this.data[1][1]);
 	}
 	
-	public Matrix2x2 round() {
+	public Matrix2x2 round(Integer precision) {
+		double power = 10^precision;
 		return new Matrix2x2(
-				((double)Math.round(this.data[0][0] * 1000))/1000,
-				((double)Math.round(this.data[0][1] * 1000))/1000,
-				((double)Math.round(this.data[1][0] * 1000))/1000,
-				((double)Math.round(this.data[1][1] * 1000))/1000
+				((double)Math.round(this.data[0][0] * power))/power,
+				((double)Math.round(this.data[0][1] * power))/power,
+				((double)Math.round(this.data[1][0] * power))/power,
+				((double)Math.round(this.data[1][1] * power))/power
 				);
 	}
 	
