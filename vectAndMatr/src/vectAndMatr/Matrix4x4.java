@@ -50,6 +50,15 @@ public class Matrix4x4 {
 		this.col3 = new Vector4D(this.get(0, 3), this.get(1,3), this.get(2,3), this.get(3,3));
 	}
 	
+	public Matrix4x4 round() {
+		Matrix4x4 result = new Matrix4x4();
+		for (Integer i = 0; i < 16; i++) {
+			double setNum = (double)Math.round(this.get(i/4, i%2)*1000)/1000;
+			result.set(i/4, i%4, setNum);
+		}
+		return result;
+	}
+	
 	public Matrix4x4 add(Matrix4x4 otherMat) {
 		Matrix4x4 result = new Matrix4x4();
 		for (int i = 0; i < 4; i++) {
@@ -59,7 +68,7 @@ public class Matrix4x4 {
 						);
 			}
 		}
-		return result;
+		return result.round();
 	}
 	
 	public Matrix4x4 scale(int scaleFact) {
@@ -69,7 +78,7 @@ public class Matrix4x4 {
 					this.get(i/4, i%4) * scaleFact
 					);
 		}
-		return result;
+		return result.round();
 	}
 	
 	public Matrix4x4 mult(Matrix4x4 otherMat) {
@@ -92,7 +101,7 @@ public class Matrix4x4 {
 		result.set(3, 1, this.row3.mult(otherMat.col1));
 		result.set(3, 2, this.row3.mult(otherMat.col2));
 		result.set(3, 3, this.row3.mult(otherMat.col3));
-		return result;
+		return result.round();
 	}
 	
 }
