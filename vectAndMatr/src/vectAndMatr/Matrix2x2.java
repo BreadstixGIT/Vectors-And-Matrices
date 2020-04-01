@@ -65,6 +65,13 @@ public class Matrix2x2 {
 				).round();
 	}
 	
+	public Vector2D mult(Vector2D otherVect) {
+		return new Vector2D(
+				this.row0.mult(otherVect),
+				this.row1.mult(otherVect)
+				);
+	}
+	
 	public Matrix2x2 scale(double scaleFact) {
 		return new Matrix2x2(
 				this.data[0][0] * scaleFact,
