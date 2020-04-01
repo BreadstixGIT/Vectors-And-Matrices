@@ -74,7 +74,7 @@ public class Matrix2x2 {
 				this.row0.mult(otherMat.col1),
 				this.row1.mult(otherMat.col0),
 				this.row1.mult(otherMat.col1)
-				).round();
+				).round(5);
 	}
 	
 	public Vector2D mult(Vector2D otherVect) {
@@ -90,7 +90,7 @@ public class Matrix2x2 {
 				this.data[0][1] * scaleFact,
 				this.data[1][0] * scaleFact,
 				this.data[1][1] * scaleFact
-				).round();
+				).round(5);
 	}
 	
 	public Matrix2x2 inverse() {
@@ -103,7 +103,7 @@ public class Matrix2x2 {
 				this.data[0][1] * -1,
 				this.data[1][0] * -1,
 				this.data[0][0]
-				).scale(1/determinant).round();
+				).scale(1/determinant).round(5);
 	}
 
 }
