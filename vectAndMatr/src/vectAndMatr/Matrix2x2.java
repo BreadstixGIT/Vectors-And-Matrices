@@ -16,10 +16,7 @@ public class Matrix2x2 {
 		this.data[0][1] = m01;
 		this.data[1][0] = m10;
 		this.data[1][1] = m11;
-		this.row0 = new Vector2D(m00, m01);
-		this.row1 = new Vector2D(m10, m11);
-		this.col0 = new Vector2D(m00, m10);
-		this.col1 = new Vector2D(m01, m11);
+		this.updateVect();
 	}
 	
 	public Matrix2x2() {
@@ -27,14 +24,18 @@ public class Matrix2x2 {
 		this.data[1][0] = 0;
 		this.data[0][1] = 0;
 		this.data[1][1] = 1;
-		this.row0 = new Vector2D(1, 0);
-		this.row1 = new Vector2D(0, 1);
-		this.col0 = new Vector2D(1, 0);
-		this.col1 = new Vector2D(0, 1);
+		this.updateVect();
 	}
 	
 	public String toString() {
 		return ("(" + this.row0 + ") , (" + this.row1 + ")");
+	}
+	
+	public void updateVect() {
+		this.row0 = new Vector2D(this.data[0][0], this.data[0][1]);
+		this.row1 = new Vector2D(this.data[1][0], this.data[1][1]);
+		this.col0 = new Vector2D(this.data[0][0], this.data[1][0]);
+		this.col1 = new Vector2D(this.data[0][1], this.data[1][1]);
 	}
 	
 	public Matrix2x2 round() {
