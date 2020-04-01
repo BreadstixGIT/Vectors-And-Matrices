@@ -78,6 +78,7 @@ public class Matrix2x2 {
 	}
 	
 	public Vector2D mult(Vector2D otherVect) {
+		this.updateVect();
 		return new Vector2D(
 				this.row0.mult(otherVect),
 				this.row1.mult(otherVect)
