@@ -27,7 +27,16 @@ public class Matrix2x2 {
 		this.updateVect();
 	}
 	
+	public void set(int row, int column, double setNum) {
+		this.data[row][column] = setNum;
+	}
+	
+	public double get(int row, int column) {
+		return this.data[row][column];
+	}
+	
 	public String toString() {
+		this.updateVect();
 		return ("(" + this.row0 + ") , (" + this.row1 + ")");
 	}
 	
@@ -57,6 +66,8 @@ public class Matrix2x2 {
 	}
 	
 	public Matrix2x2 mult(Matrix2x2 otherMat) {
+		this.updateVect();
+		otherMat.updateVect();
 		return new Matrix2x2(
 				this.row0.mult(otherMat.col0),
 				this.row0.mult(otherMat.col1),

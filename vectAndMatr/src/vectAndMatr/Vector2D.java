@@ -18,6 +18,23 @@ public class Vector2D {
 		this.y = 0;
 	}
 	
+	public void set(int place, double setNum) {
+		if (place == 0) {
+			this.x = setNum;
+		} else if (place == 1) {
+			this.y = setNum;
+		}
+	}
+	
+	public double get(int place) {
+		if (place == 0) {
+			return this.x;
+		} else if (place == 1) {
+			return this.y;
+		} 
+		return 0;
+	}
+	
 	public String toString() {
 		return this.x + " , " + this.y;
 	}
