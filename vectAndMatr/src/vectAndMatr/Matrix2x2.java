@@ -35,6 +35,14 @@ public class Matrix2x2 {
 		}
 	}
 	
+	public Matrix2x2(Vector4D vect) {
+		new Matrix2x2(
+				new Vector2D(vect.get(0), vect.get(1)),
+				new Vector2D(vect.get(2), vect.get(3)), 0
+				);
+		this.updateVect();
+	}
+	
 	public Matrix2x2() {
 		this.data[0][0] = 1;
 		this.data[1][0] = 0;

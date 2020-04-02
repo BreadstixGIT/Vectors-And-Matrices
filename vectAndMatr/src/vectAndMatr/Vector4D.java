@@ -25,6 +25,10 @@ public class Vector4D {
 		this.w = second.get(1);
 	}
 	
+	public Vector4D(Matrix2x2 mat) {
+		new Vector4D(mat.getRow(0), mat.getRow(1));
+	}
+	
 	public Vector4D() {
 		this.x = 0;
 		this.y = 0;
