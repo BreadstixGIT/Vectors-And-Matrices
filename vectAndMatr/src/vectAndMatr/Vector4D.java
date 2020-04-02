@@ -18,6 +18,13 @@ public class Vector4D {
 		this.w = w;
 	}
 	
+	public Vector4D(Vector2D first, Vector2D second) {
+		this.x = first.get(0);
+		this.y = first.get(1);
+		this.z = second.get(0);
+		this.w = second.get(1);
+	}
+	
 	public Vector4D() {
 		this.x = 0;
 		this.y = 0;

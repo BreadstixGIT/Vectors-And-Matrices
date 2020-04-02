@@ -19,6 +19,22 @@ public class Matrix2x2 {
 		this.updateVect();
 	}
 	
+	public Matrix2x2(Vector2D first, Vector2D second, int orient) {
+		if (orient == 0) {
+			this.data[0][0] = first.get(0);
+			this.data[0][1] = first.get(1);
+			this.data[1][0] = second.get(0);
+			this.data[1][1] = second.get(1);
+			this.updateVect();
+		} else if (orient == 1) {
+			this.data[0][0] = first.get(0);
+			this.data[0][1] = second.get(0);
+			this.data[1][0] = first.get(1);
+			this.data[1][1] = second.get(1);
+			this.updateVect();
+		}
+	}
+	
 	public Matrix2x2() {
 		this.data[0][0] = 1;
 		this.data[1][0] = 0;
@@ -31,8 +47,48 @@ public class Matrix2x2 {
 		this.data[row][column] = setNum;
 	}
 	
+	public void setRow(int row, Vector2D inRow) {
+		if (row == 0) {
+			this.row0 = inRow;
+		} else if (row == 1) {
+			this.row1 = inRow;
+		}
+		this.updateVect(1);
+		this.updateData();
+	}
+	
+	public void setCol(int col, Vector2D inCol) {
+		if (col == 0) {
+			this.col0 = inCol;
+		} else if (col == 1) {
+			this.col1 = inCol;
+		}
+		this.updateVect(0);
+		this.updateData();
+	}
+	
 	public double get(int row, int column) {
 		return this.data[row][column];
+	}
+	
+	public Vector2D getRow(int row) {
+		if (row == 0) {
+			return this.row0;
+		} else if (row == 1) {
+			return this.row1;
+		} else {
+			return new Vector2D();
+		}
+	}
+	
+	public Vector2D getCol(int col) {
+		if (col == 0) {
+			return this.col0;
+		} else if (col == 1) {
+			return this.col1;
+		} else {
+			return new Vector2D();
+		}
 	}
 	
 	public String toString() {
@@ -45,6 +101,34 @@ public class Matrix2x2 {
 		this.row1 = new Vector2D(this.data[1][0], this.data[1][1]);
 		this.col0 = new Vector2D(this.data[0][0], this.data[1][0]);
 		this.col1 = new Vector2D(this.data[0][1], this.data[1][1]);
+	}
+	
+	public void updateVect(int orientation) {
+		if (orientation == 0) {
+			this.row0 = new Vector2D(this.data[0][0], this.data[0][1]);
+			this.row1 = new Vector2D(this.data[1][0], this.data[1][1]);
+		} else if (orientation == 1) {
+			this.col0 = new Vector2D(this.data[0][0], this.data[1][0]);
+			this.col1 = new Vector2D(this.data[0][1], this.data[1][1]);
+		}
+	}
+
+	public void updateData() {
+		for (int i = 0; i < 2; i++) {
+			this.set(0, i, row0.get(i));
+			this.set(1, i, row1.get(i));
+		}
+	}
+	
+	public void updateData(int orientation) {
+		if (orientation == 0) {
+			this.updateVect();
+		} else if(orientation == 1) {
+			for (int i = 0; i < 2; i++) {
+				this.set(i, 0, col0.get(i));
+				this.set(i, 1, col1.get(i));
+			}
+		}
 	}
 	
 	public Matrix2x2 round(Integer precision) {
