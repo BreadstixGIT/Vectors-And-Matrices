@@ -67,6 +67,15 @@ public class Matrix4x4 {
 		this.updateVect();
 	}
 	
+	public void set(Matrix4x4 initial) {
+		initial.updateVect();
+		this.setRow(0, initial.getRow(0));
+		this.setRow(1, initial.getRow(1));
+		this.setRow(2, initial.getRow(2));
+		this.setRow(3, initial.getRow(3));
+		this.updateData();
+	}
+	
 	public void setRow(int row, Vector4D inRow) {
 		if (row == 0) {
 			this.row0 = inRow;

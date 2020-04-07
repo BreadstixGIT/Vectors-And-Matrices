@@ -55,6 +55,13 @@ public class Matrix2x2 {
 		this.data[row][column] = setNum;
 	}
 	
+	public void set(Matrix2x2 initial) {
+		initial.updateVect();
+		this.setRow(0, initial.getRow(0));
+		this.setRow(1, initial.getRow(1));
+		this.updateData();
+	}
+	
 	public void setRow(int row, Vector2D inRow) {
 		if (row == 0) {
 			this.row0 = inRow;

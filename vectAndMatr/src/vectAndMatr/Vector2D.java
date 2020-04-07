@@ -26,6 +26,12 @@ public class Vector2D {
 		}
 	}
 	
+	public void set(Vector2D result) {
+		for (int i = 0; i < 2; i++) {
+			this.set(i, result.get(i));
+		}
+	}
+	
 	public double get(int place) {
 		if (place == 0) {
 			return this.x;

@@ -48,6 +48,12 @@ public class Vector4D {
 		}
 	}
 	
+	public void set(Vector4D initial) {
+		for (int i = 0; i < 4; i++) {
+			this.set(i, initial.get(i));
+		}
+	}
+	
 	public double get(int place) {
 		if (place == 0) {
 			return this.x;
