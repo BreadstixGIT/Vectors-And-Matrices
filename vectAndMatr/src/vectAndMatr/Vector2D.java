@@ -26,9 +26,9 @@ public class Vector2D {
 		}
 	}
 	
-	public void set(Vector2D result) {
+	public void set(Vector2D initial) {
 		for (int i = 0; i < 2; i++) {
-			this.set(i, result.get(i));
+			this.set(i, initial.get(i));
 		}
 	}
 	
